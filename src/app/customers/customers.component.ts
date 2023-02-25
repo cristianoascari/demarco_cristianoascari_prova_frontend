@@ -5,7 +5,7 @@ import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 // Angular Material.
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 // Third-party.
 import { TranslateService } from '@ngx-translate/core';
@@ -14,7 +14,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { ICustomer } from '@app/shared';
 
 // App components.
-import { CustomerDataComponent } from './customer-data/customer-data.component';
+import { CustomerDataComponent } from '@app/customers/customer-data/customer-data.component';
+import { CustomerDeleteComponent } from '@app/customers/customer-delete/customer-delete.component';
 
 // App services.
 import { CustomerService } from '@app/shared/';
@@ -83,6 +84,8 @@ export class CustomersComponent implements OnInit {
 
     interfaceKeys.map(key => this.tableColumns.push(this.translate.instant('fields.' + key) || key));
 
+    this.tableColumns.push('_buttons');
+
     // this.tableColumns.concat(this.extraTableCollumns);
   }
 
@@ -92,8 +95,30 @@ export class CustomersComponent implements OnInit {
   }
 
   public viewCustomer(customer: ICustomer): void {
-    this.dialog.open(CustomerDataComponent, {
+    this.openCustomerDialog(CustomerDataComponent, customer);
+  }
+
+  public editCustomer(customer: ICustomer): void {
+    this.openCustomerDialog(CustomerDataComponent, customer);
+  }
+
+  public deleteCustomer(customer: ICustomer): void {
+    this.openCustomerDialog(CustomerDeleteComponent, customer, true);
+  }
+
+  private openCustomerDialog(
+    viewReference: any,
+    customer: ICustomer,
+    updateDataAfterClose: boolean = false
+  ): void {
+    const dialogRef: MatDialogRef<any> = this.dialog.open(viewReference, {
       data: {customer},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (updateDataAfterClose) {
+        this.getCustomers();
+      }
     });
   }
 }

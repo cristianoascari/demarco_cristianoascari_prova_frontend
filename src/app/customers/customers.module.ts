@@ -23,13 +23,21 @@ import { CustomersRoutingModule } from '@app/customers/customers-routing.module'
 // App components.
 import { CustomersComponent } from '@app/customers/customers.component';
 import { CustomerDataComponent } from './customer-data/customer-data.component';
+import { CustomerDeleteComponent } from './customer-delete/customer-delete.component';
 
 // App modules.
 import { SharedModule } from '@app/shared/shared.module';
 
 @NgModule({
-  declarations: [CustomersComponent, CustomerDataComponent],
-  entryComponents: [CustomerDataComponent],
+  declarations: [
+    CustomersComponent,
+    CustomerDataComponent,
+    CustomerDeleteComponent
+  ],
+  entryComponents: [
+    CustomerDataComponent,
+    CustomerDeleteComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,

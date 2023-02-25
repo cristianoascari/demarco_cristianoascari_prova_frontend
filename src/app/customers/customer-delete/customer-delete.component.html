@@ -1,0 +1,15 @@
+<div mat-dialog-content>
+  <p>{{customer.id}}. {{customer.name}}</p>
+
+  <p>{{'messages.questions.deleteUser' | translate}}</p>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="closeDialog()">
+    {{'labels.cancel' | translate}}
+  </button>
+
+  <button mat-button color="warn" (click)="deleteCustomer()" cdkFocusInitial>
+    {{'labels.remove' | translate}}
+  </button>
+</div>

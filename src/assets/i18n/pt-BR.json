@@ -20,24 +20,30 @@
     }
   },
   "labels": {
+    "cancel": "Cancelar",
     "close": "Fechar",
     "find": "Localizar",
     "from": "De",
     "menu": "Menu",
-    "search": "Pesquisar",
+    "remove": "Excluir",
     "result": "Resultado",
     "results": "Resultados",
+    "search": "Pesquisar",
     "userMenu": "Menu do usuário",
     "years": "Anos"
   },
   "messages": {
-    "generic": {
-      "goHome": "Ir para a página inicial"
-    },
     "error": {
       "notFound": "404 - URL não localizada",
       "noItemsFound": "Nenhum item localizado",
       "todo": "Recurso não implementado"
+    },
+    "generic": {
+      "dbRestore": "Execute 'node restoredb' na raiz do projeto para restaurar os dados originais",
+      "goHome": "Ir para a página inicial"
+    },
+    "questions": {
+      "deleteUser": "Excluir este usuário?"
     }
   },
   "user": {

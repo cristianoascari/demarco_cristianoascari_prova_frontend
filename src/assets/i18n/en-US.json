@@ -20,24 +20,30 @@
     }
   },
   "labels": {
+    "cancel": "Cancel",
     "close": "Fechar",
     "find": "Find",
     "from": "From",
     "menu": "Menu",
-    "search": "Search",
+    "remove": "Remove",
     "result": "Result",
     "results": "Results",
+    "search": "Search",
     "userMenu": "User menu",
     "years": "Years"
   },
   "messages": {
-    "generic": {
-      "goHome": "Go home"
-    },
     "error": {
       "notFound": "404 - Not found URL",
       "noItemsFound": "There are no items do show",
       "todo": "Resource not implemented"
+    },
+    "generic": {
+      "dbRestore": "Run 'node restoredb' at project root to restore initial data",
+      "goHome": "Go home"
+    },
+    "questions": {
+      "deleteUser": "Remove this user?"
     }
   },
   "user": {

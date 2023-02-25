@@ -1,39 +1,69 @@
 <div class="customers-header">
-  <form class="example-form">
+  <form *ngIf="totalCustomers" class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>{{'labels.find' | translate}}</mat-label>
 
       <input type="text" matInput [formControl]="searchControl">
+
+      <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </form>
 
-  <span class="total-customers">
+  <span *ngIf="totalCustomers" class="total-customers">
     {{totalCustomers || 0}} {{(totalCustomers === 1 ? 'labels.result' : 'labels.results') | translate | lowercase}}
   </span>
+
+  <span *ngIf="!totalCustomers" class="no-results-text">
+    {{'messages.error.noItemsFound' | translate}}
+  </span>
 </div>
-<table mat-table [dataSource]="customers">
+<table *ngIf="totalCustomers" mat-table [dataSource]="customers">
 
   <ng-container *ngFor="let column of extraTableCollumns; index as extraColumnIndex" matColumnDef="viewButton">
     <th mat-header-cell *matHeaderCellDef>&nbsp;</th>
+
     <td mat-cell *matCellDef="let customer">
       <mat-icon>more_vert</mat-icon>
     </td>
   </ng-container>
 
   <ng-container *ngFor="let column of tableColumns; index as columnIndex" matColumnDef="{{column}}">
-    <th mat-header-cell *matHeaderCellDef>{{column}}</th>
-    <td mat-cell *matCellDef="let customer">{{getCustomerValue(customer, columnIndex)}}</td>
+    <th mat-header-cell *matHeaderCellDef>{{column !== '_buttons' ? column : ''}}</th>
+
+    <td mat-cell *matCellDef="let customer">
+      <span *ngIf="column !== '_buttons'">{{getCustomerValue(customer, columnIndex)}}</span>
+
+      <span *ngIf="column === '_buttons'">
+        <button
+          mat-mini-fab
+          color="primary"
+          aria-label="Visualizar cliente"
+          (click)="viewCustomer(customer)"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+
+        <button
+          mat-mini-fab
+          color="accent"
+          aria-label="Editar cliente"
+          (click)="editCustomer(customer)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-mini-fab
+          color="warn"
+          aria-label="Excluir cliente"
+          (click)="deleteCustomer(customer)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </span>
+    </td>
   </ng-container>
 
-  <!--<ng-container *ngFor="let column of extraTableCollumns; index as columnIndex" matColumnDef="{{column}}">
-    <th mat-header-cell *matHeaderCellDef>{{column}}</th>
-    <td mat-cell *matCellDef="let customer">
-      <button mat-flat-button color="primary">
-        <mat-icon>visibility</mat-icon>
-      </button>
-    </td>
-  </ng-container>-->
-
   <tr mat-header-row *matHeaderRowDef="tableColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: tableColumns;" (click)="viewCustomer(row)"></tr>
+  <tr mat-row *matRowDef="let row; columns: tableColumns;"></tr>
 </table>

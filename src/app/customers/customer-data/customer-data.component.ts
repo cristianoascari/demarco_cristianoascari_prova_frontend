@@ -1,6 +1,5 @@
 // Angular.
 import { Component, Inject, OnInit } from '@angular/core';
-import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 // Angular Material.
@@ -48,7 +47,6 @@ export class CustomerDataComponent implements OnInit {
       this.orders = res;
       this.customerOrderItems = res.map(r => r.items);
       this.totalValue = res[0].total;
-
     });
   }
 }

@@ -23,4 +23,12 @@ export class CustomerService {
         catchError((err) => throwError(err))
       );
   }
+
+  public deleteCustomer(customer: ICustomer): Observable<any> {
+    return this.http.delete(`${CUSTOMERS_API_URL}/${customer.id}`)
+      .pipe(
+        map((res) => res),
+        catchError((err) => throwError(err))
+      );
+  }
 }
