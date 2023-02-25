@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from '@shared/shared.module';
 
 // App interceptors.
+import { HttpErrorInterceptor } from '@shared/interceptors';
 import { HttpHeaderInterceptor } from '@shared/interceptors';
 
 // App components.
@@ -43,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient) { return new TranslateHttpLo
     SharedModule
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: HttpHeaderInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
