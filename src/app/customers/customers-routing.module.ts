@@ -4,12 +4,22 @@ import { Routes, RouterModule } from '@angular/router';
 
 // App components.
 import { CustomersComponent } from '@app/customers/customers.component';
+import { CustomersFormComponent } from '@app/customers/customers-form/customers-form.component';
 
 // Routes.
 const routes: Routes = [
   {
     path: '',
-    component: CustomersComponent
+    component: CustomersComponent,
+    runGuardsAndResolvers: 'always'
+  },
+  {
+    path: 'edit-customer/:id',
+    component: CustomersFormComponent
+  },
+  {
+    path: 'new-customer',
+    component: CustomersFormComponent
   }
 ];
 

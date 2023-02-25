@@ -4,10 +4,17 @@
     <span>{{'messages.generic.dbRestore' | translate}}</span>
   </div>
   <mat-toolbar>
-    <mat-form-field appearance="fill">
+    <mat-form-field
+      appearance="fill"  
+      matTooltip="{{'i18n.language' | translate}}"
+      matTooltipPosition="before"
+    >
       <!--<mat-label>{{'i18n.language' | translate}}</mat-label>-->
 
-      <mat-select [formControl]="formLanguages" name="formLanguages">
+      <mat-select
+        [formControl]="formLanguages"
+        name="formLanguages"
+      >
         <mat-option
           *ngFor="let language of languagesList"
           [value]="language.code"         

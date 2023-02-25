@@ -20,8 +20,11 @@
     }
   },
   "labels": {
+    "addCustomer": "Adicionar usuário",
     "cancel": "Cancelar",
     "close": "Fechar",
+    "deleteCustomer": "Excluir usuário",
+    "editCustomer": "Editar usuário",
     "find": "Localizar",
     "from": "De",
     "menu": "Menu",
@@ -30,6 +33,7 @@
     "results": "Resultados",
     "search": "Pesquisar",
     "userMenu": "Menu do usuário",
+    "viewCustomer": "Visualizar usuário",
     "years": "Anos"
   },
   "messages": {

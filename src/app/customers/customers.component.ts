@@ -1,6 +1,9 @@
 // Angular.
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+
+// RxJS.
 import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
@@ -38,6 +41,7 @@ export class CustomersComponent implements OnInit {
   constructor(
     private customersService: CustomerService,
     public dialog: MatDialog,
+    private router: Router,
     protected translate: TranslateService
   ) {}
 
@@ -77,6 +81,10 @@ export class CustomersComponent implements OnInit {
     this.customers.subscribe(c => this.totalCustomers = c.length);
   }
 
+  public clearFilter(): void {
+    this.searchControl.setValue('');
+  }
+
   private getTableColumnsNames(): void {
     this.tableColumns.length = 0;
 
@@ -94,12 +102,16 @@ export class CustomersComponent implements OnInit {
     return customer[customerKeys[columnIndex]];
   }
 
+  public addNewCustomer(): void {
+    this.router.navigate(['new-customer']);
+  }
+
   public viewCustomer(customer: ICustomer): void {
     this.openCustomerDialog(CustomerDataComponent, customer);
   }
 
   public editCustomer(customer: ICustomer): void {
-    this.openCustomerDialog(CustomerDataComponent, customer);
+    this.router.navigate([`edit-customer/${customer.id}`]);
   }
 
   public deleteCustomer(customer: ICustomer): void {

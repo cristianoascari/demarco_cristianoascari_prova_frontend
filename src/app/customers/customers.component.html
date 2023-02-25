@@ -1,21 +1,39 @@
-<div class="customers-header">
-  <form *ngIf="totalCustomers" class="example-form">
+<div class="customers-header" [ngClass]="{'empty-header': !customersFull?.length}">
+  <form *ngIf="customersFull?.length" class="example-form">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>{{'labels.search' | translate}}</mat-label>
 
       <input type="text" matInput [formControl]="searchControl">
 
-      <mat-icon matSuffix>search</mat-icon>
+      <button *ngIf="searchControl.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearFilter()">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <mat-icon *ngIf="!searchControl.value" matSuffix>search</mat-icon>
     </mat-form-field>
   </form>
 
-  <span *ngIf="totalCustomers" class="total-customers">
-    {{totalCustomers || 0}} {{(totalCustomers === 1 ? 'labels.result' : 'labels.results') | translate | lowercase}}
-  </span>
+  <div [ngClass]="{'no-results-form': !customersFull?.length}">
+    <span *ngIf="totalCustomers" class="total-customers">
+      {{totalCustomers || 0}} {{(totalCustomers === 1 ? 'labels.result' : 'labels.results') | translate | lowercase}}
+    </span>
 
-  <span *ngIf="!totalCustomers" class="no-results-text">
-    {{'messages.error.noItemsFound' | translate}}
-  </span>
+    <span *ngIf="!totalCustomers" class="no-results-text">
+      {{'messages.error.noItemsFound' | translate}}
+    </span>
+
+    <button
+      mat-fab
+      extended
+      color="primary"
+      class="add-button"
+      matTooltip="{{'labels.addCustomer' | translate}}"
+      matTooltipPosition="{{customersFull?.lenght ? 'before' : 'below'}}"
+      (click)="addNewCustomer()"
+    >
+      <mat-icon>person_add</mat-icon>
+    </button>
+  </div>
 </div>
 <table *ngIf="totalCustomers" mat-table [dataSource]="customers">
 
@@ -38,6 +56,8 @@
           mat-mini-fab
           color="primary"
           aria-label="Visualizar cliente"
+          matTooltip="{{'labels.viewCustomer' | translate}}"
+          matTooltipPosition="above"
           (click)="viewCustomer(customer)"
         >
           <mat-icon>visibility</mat-icon>
@@ -47,6 +67,8 @@
           mat-mini-fab
           color="accent"
           aria-label="Editar cliente"
+          matTooltip="{{'labels.editCustomer' | translate}}"
+          matTooltipPosition="above"
           (click)="editCustomer(customer)"
         >
           <mat-icon>edit</mat-icon>
@@ -56,6 +78,8 @@
           mat-mini-fab
           color="warn"
           aria-label="Excluir cliente"
+          matTooltip="{{'labels.deleteCustomer' | translate}}"
+          matTooltipPosition="above"
           (click)="deleteCustomer(customer)"
         >
           <mat-icon>delete</mat-icon>

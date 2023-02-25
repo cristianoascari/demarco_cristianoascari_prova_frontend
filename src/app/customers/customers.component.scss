@@ -3,13 +3,32 @@
   display: flex;
   justify-content: space-between;
 
+  &.empty-header {
+    height: 100%;
+  }
+
   .mat-form-field {
     min-width: 25rem;
+  }
+
+  .no-results-form {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    .add-button {
+      margin: 20px 0;
+    }
   }
 
   .no-results-text {
     text-align: center;
     width: 100%;
+  }
+
+  .add-button {
+    margin-left: 10px;
   }
 }
 

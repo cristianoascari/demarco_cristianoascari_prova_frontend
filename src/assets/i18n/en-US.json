@@ -20,8 +20,11 @@
     }
   },
   "labels": {
+    "addCustomer": "Add customer",
     "cancel": "Cancel",
-    "close": "Fechar",
+    "close": "Close",
+    "deleteCustomer": "Delete costumer",
+    "editCustomer": "Edit customer",
     "find": "Find",
     "from": "From",
     "menu": "Menu",
@@ -30,6 +33,7 @@
     "results": "Results",
     "search": "Search",
     "userMenu": "User menu",
+    "viewCustomer": "View costumer",
     "years": "Years"
   },
   "messages": {
