@@ -1,0 +1,47 @@
+{
+  "exit": "Exit",
+  "fields": {
+    "age": "Age",
+    "city": "City",
+    "customer": "Customer",
+    "customerId": "Customer",
+    "id": "ID",
+    "item": "Item",
+    "items": "Items",
+    "name": "Name",
+    "total": "Total",
+    "value": "Value"
+  },
+  "i18n": {
+    "language": "Language",
+    "languages" : {
+      "enUS": "English",
+      "ptBR": "Brazilian Portuguese"
+    }
+  },
+  "labels": {
+    "close": "Fechar",
+    "find": "Find",
+    "from": "From",
+    "menu": "Menu",
+    "search": "Search",
+    "result": "Result",
+    "results": "Results",
+    "userMenu": "User menu",
+    "years": "Years"
+  },
+  "messages": {
+    "generic": {
+      "goHome": "Go home"
+    },
+    "error": {
+      "notFound": "404 - Not found URL",
+      "noItemsFound": "There are no items do show",
+      "todo": "Resource not implemented"
+    }
+  },
+  "user": {
+    "name": "Name",
+    "profile": "Profile"
+  }
+}

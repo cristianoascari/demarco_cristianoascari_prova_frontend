@@ -1,0 +1,47 @@
+{
+  "exit": "Sair",
+  "fields": {
+    "age": "Idade",
+    "city": "Cidade",
+    "customer": "Cliente",
+    "customerId": "Cliente",
+    "id": "ID",
+    "item": "Item",
+    "items": "Itens",
+    "name": "Nome",
+    "total": "Total",
+    "value": "Valor"
+  },
+  "i18n": {
+    "language": "Idioma",
+    "languages" : {
+      "enUS": "Inglês",
+      "ptBR": "Português"
+    }
+  },
+  "labels": {
+    "close": "Fechar",
+    "find": "Localizar",
+    "from": "De",
+    "menu": "Menu",
+    "search": "Pesquisar",
+    "result": "Resultado",
+    "results": "Resultados",
+    "userMenu": "Menu do usuário",
+    "years": "Anos"
+  },
+  "messages": {
+    "generic": {
+      "goHome": "Ir para a página inicial"
+    },
+    "error": {
+      "notFound": "404 - URL não localizada",
+      "noItemsFound": "Nenhum item localizado",
+      "todo": "Recurso não implementado"
+    }
+  },
+  "user": {
+    "name": "Nome",
+    "profile": "Perfil"
+  }
+}

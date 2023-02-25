@@ -1,0 +1,19 @@
+.customers-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  .mat-form-field {
+    min-width: 25rem;
+  }
+}
+
+.mat-row {
+  &:hover {
+    background-color: #eee6;
+  }
+}
+
+.mat-column-ID {
+  font-weight: bold;
+}

@@ -1,4 +1,8 @@
+// Angular.
 import { Component } from '@angular/core';
+
+// Third-party.
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +10,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Demarco-Cristiano';
+
+  constructor(private translate: TranslateService) {
+    this.setLanguage();
+  }
+
+  private setLanguage(): void {
+    this.translate.setDefaultLang('pt-BR');
+    this.translate.use('pt-BR');
+  }
 }

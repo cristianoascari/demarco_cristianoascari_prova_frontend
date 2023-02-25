@@ -1,0 +1,21 @@
+footer {
+  height: 80px;
+  padding: 20px 0 0;
+
+  .mat-toolbar {
+    background-color: #fff;
+    justify-content: flex-end;
+  }
+
+  ::ng-deep .mat-form-field-infix {
+    border-top: 0;
+  }
+
+  ::ng-deep .mat-select-arrow-wrapper {
+    vertical-align: bottom;
+  }
+
+  .mat-select {
+    font-size: 1rem;
+  }
+}

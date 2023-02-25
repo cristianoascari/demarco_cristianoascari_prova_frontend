@@ -1,0 +1,48 @@
+.dialog-window {
+  height: auto;
+  width: 70em;
+
+  .user-data-header {
+    display: grid;
+    grid-template-columns: 120px auto;
+
+    .user-avatar {
+      background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+      background-size: cover;
+      border-radius: 50%;
+      height: 100px;
+      width: 100px;
+    }
+
+    .user-data {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  
+      h1 {
+        margin: 0;
+
+        span {
+          opacity: .3;
+        }
+      }
+
+      .total-value {
+        color: #ff4081;
+      }
+    }
+  }
+
+  .mat-divider {
+    margin: 20px 0;
+  }
+
+  .mat-column-value {
+    padding-right: 20px;
+    width: 100px;
+
+    &.mat-cell {
+      text-align: right;
+    }
+  }
+}

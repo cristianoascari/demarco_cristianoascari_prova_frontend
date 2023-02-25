@@ -1,0 +1,59 @@
+<header>
+  <mat-toolbar color="primary">
+    <span
+      class="spn-title"
+      matTooltip="{{'messages.generic.goHome' | translate}}"
+      matTooltipPosition="after"
+      [routerLink]="['/']"
+    >Demarco Test</span>
+
+    <span class="menu-spacer"></span>
+
+    <button
+      mat-icon-button
+      matTooltip="{{'labels.userMenu' | translate}}"
+      matTooltipPosition="before"
+      [matMenuTriggerFor]="userMenu"
+      aria-label="Menu icon"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item (click)="viewUserProfile()">
+        <mat-icon>manage_accounts</mat-icon>
+        {{'user.profile' | translate}}
+      </button>
+
+      <button mat-menu-item [matMenuTriggerFor]="languagesMenu">
+        <mat-icon>language</mat-icon>
+        {{'i18n.language' | translate}}
+      </button>
+
+      <mat-divider></mat-divider>
+
+      <button mat-menu-item (click)="logoutUser()">
+        <mat-icon>logout</mat-icon>
+        {{'exit' | translate}}
+      </button>
+    </mat-menu>
+
+    <mat-menu #languagesMenu="matMenu">
+      <button
+        mat-menu-item
+        [ngClass]="{'active-menu': languageService.getCurrentLanguage() === 'en-US'}"
+        (click)="languageService.setCurrentLanguage('en-US')"
+      >
+        {{'i18n.languages.enUS' | translate}}
+      </button>
+      
+      <button
+        mat-menu-item
+        [ngClass]="{'active-menu': languageService.getCurrentLanguage() === 'pt-BR'}"
+        (click)="languageService.setCurrentLanguage('pt-BR')"
+      >
+        {{'i18n.languages.ptBR' | translate}}
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+</header>

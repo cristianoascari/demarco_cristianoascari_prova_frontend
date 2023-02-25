@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 0;
+
+  table {
+    width: 100%;
+  }
+
+  .app-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    /*ie10*/
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+
+    header,
+    footer{
+      flex-basis: 50px;
+      
+      /*ie10*/
+      -ms-flex-preferred-size: 50px;
+      
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      
+      /*ie10*/
+      display: -ms-flexbox;
+      -ms-flex-align: center;
+      -ms-flex-line-pack: distribute;
+    }
+
+    footer {
+      background-color: #fff;
+      margin-top: auto;
+    }
+
+    main {
+      background-color: #eee;
+      flex: 1;
+      padding: 20px 15px;
+      
+      /*ie10*/
+      -ms-flex: 1 1 auto;
+    }
+  }
+}
