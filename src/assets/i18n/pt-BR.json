@@ -15,8 +15,8 @@
   "i18n": {
     "language": "Idioma",
     "languages" : {
-      "enUS": "Inglês",
-      "ptBR": "Português"
+      "enUS": "en-US",
+      "ptBR": "pt-BR"
     }
   },
   "labels": {
