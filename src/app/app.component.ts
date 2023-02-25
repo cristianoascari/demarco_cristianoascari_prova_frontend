@@ -1,8 +1,11 @@
 // Angular.
 import { Component } from '@angular/core';
 
-// Third-party.
-import { TranslateService } from '@ngx-translate/core';
+// App environment.
+import { environment } from '@env/environment';
+
+// App services.
+import { LanguageService } from '@shared/services';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +14,13 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
 
-  constructor(private translate: TranslateService) {
+  constructor(private languageService: LanguageService) {
     this.setLanguage();
   }
 
   private setLanguage(): void {
-    this.translate.setDefaultLang('pt-BR');
-    this.translate.use('pt-BR');
+    const currentLanguage: string = localStorage.getItem(environment.localStorage.language) || null;
+
+    this.languageService.setCurrentLanguage(currentLanguage, true);
   }
 }

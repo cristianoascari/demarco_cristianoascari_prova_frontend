@@ -4,8 +4,11 @@ import { Injectable } from '@angular/core';
 // Third-party.
 import { TranslateService } from '@ngx-translate/core';
 
+// App environment.
+import { environment } from '@env/environment';
+
 // App models.
-import { ILanguage } from '../../models/language.model';
+import { ILanguage } from '@shared/models';
 
 @Injectable({providedIn: 'root'})
 export class LanguageService {
@@ -16,12 +19,20 @@ export class LanguageService {
     return this.translate.currentLang;
   }
 
-  public setCurrentLanguage(languageKey: string): void {
-    const currentLang: string = this.getCurrentLanguage();
+  public setCurrentLanguage(languageKey: string, setAsDefaultLanguage: boolean = false): void {
+    languageKey = languageKey || environment.defaultLanguage;
 
-    if (languageKey !== currentLang) {
-      this.translate.use(languageKey);
+    this.translate.use(languageKey);
+
+    localStorage.setItem(environment.localStorage.language, languageKey);
+
+    if (setAsDefaultLanguage) {
+      this.setDefaultLanguage(languageKey);
     }
+  }
+
+  private setDefaultLanguage(languageKey): void {
+    this.translate.setDefaultLang(languageKey);
   }
 
   public setLanguagesList(): ILanguage[] {

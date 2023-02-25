@@ -19,7 +19,6 @@ import { LanguageService } from '@shared/services/language/language.service';
 export class FooterComponent implements OnInit {
   public formLanguages = new FormControl('');
   public languagesList: ILanguage[] = this.languageService.setLanguagesList();
-  public currentLanguage: ILanguage;
 
   constructor(
     protected languageService: LanguageService,
@@ -27,8 +26,8 @@ export class FooterComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.currentLanguage = this.languagesList.find(lang => lang.code === 'pt-BR');
-    this.formLanguages.setValue(this.currentLanguage.code);
+    const currentLanguage: string = this.languageService.getCurrentLanguage();
+    this.formLanguages.setValue(currentLanguage);
 
     this.listenToLanguageChanges();
   }

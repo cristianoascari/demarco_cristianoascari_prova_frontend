@@ -22,6 +22,10 @@ footer {
     background-color: #fff;
     justify-content: flex-end;
     width: auto;
+
+    .mat-form-field {
+      width: 120px;
+    }
   }
 
   ::ng-deep .mat-form-field-infix {
