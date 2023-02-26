@@ -98,6 +98,7 @@
   </table>
 
   <mat-paginator
+    *ngIf="totalCustomers"
     (page)="handlePageEvent($event)"
     [length]="paginatorLength"
     [pageSize]="paginatorSize"
