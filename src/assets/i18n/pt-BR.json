@@ -58,6 +58,10 @@
     },
     "questions": {
       "deleteUser": "Excluir este usuário?"
+    },
+    "sucess": {
+      "customerCreated": "Cliente cadastrado com sucesso!",
+      "customerUpdated": "Cliente atualizado com sucesso!"
     }
   },
   "user": {

@@ -1,10 +1,10 @@
 {
   "customers": [
     {
-      "id": 1,
-      "name": "John Doe",
       "age": 31,
-      "city": "Miami"
+      "city": "Miami",
+      "id": 1,
+      "name": "John Doe"
     },
     {
       "id": 2,
@@ -47,6 +47,12 @@
       "city": "Rio de Janeiro",
       "id": 8,
       "name": "Maria Santos"
+    },
+    {
+      "age": 33,
+      "city": "Curitiba",
+      "id": 9,
+      "name": "aaa"
     }
   ],
   "orders": [

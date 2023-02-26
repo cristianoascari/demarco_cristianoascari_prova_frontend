@@ -58,6 +58,10 @@
     },
     "questions": {
       "deleteUser": "Remove this user?"
+    },
+    "sucess": {
+      "customerCreated": "The new customer was created!",
+      "customerUpdated": "The new customer was updated!"
     }
   },
   "user": {

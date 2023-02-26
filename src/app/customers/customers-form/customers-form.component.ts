@@ -3,6 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+// Third-party.
+import { TranslateService } from '@ngx-translate/core';
+
+// Angular Material.
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 // App models.
 import { ICustomer } from '@app/shared';
 
@@ -27,7 +33,9 @@ export class CustomersFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private customerService: CustomerService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private translate: TranslateService
   ) {
     this.subscribeToRouterParamsChanges();
   }
@@ -77,12 +85,14 @@ export class CustomersFormComponent implements OnInit {
 
   private createCustomer(): void {
     this.customerService.createCustomer(this.customer).subscribe(res => {
+      this.snackBar.open(this.translate.instant('messages.sucess.customerCreated'), 'OK', {duration: 3000});
       this.startCreatingNewCustomer();
     });
   }
 
   private editCustomer(): void {
     this.customerService.updateCustomer(this.customer).subscribe(res => {
+      this.snackBar.open(this.translate.instant('messages.sucess.customerUpdated'), 'OK', {duration: 3000});
       this.goHome();
     });
   }
