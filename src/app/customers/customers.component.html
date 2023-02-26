@@ -1,6 +1,6 @@
 <div class="customers-header" [ngClass]="{'empty-header': !customersFull?.length}">
   <form *ngIf="customersFull?.length" class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-form-field class="example-full-width" appearance="outline">
       <mat-label>{{'labels.search' | translate}}</mat-label>
 
       <input type="text" matInput [formControl]="searchControl">

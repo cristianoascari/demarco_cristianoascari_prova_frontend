@@ -21,6 +21,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FooterComponent } from '@shared/components/footer/footer.component';
 import { HeaderComponent } from '@shared/components/header/header.component';
 
+// App directives.
+import { InputFocusDirective } from '@shared/directives';
+
 // App pipes.
 import { FormatCurrencyPipe } from '@shared/pipes';
 
@@ -28,14 +31,16 @@ import { FormatCurrencyPipe } from '@shared/pipes';
   declarations: [
     FooterComponent,
     FormatCurrencyPipe,
-    HeaderComponent
+    HeaderComponent,
+    InputFocusDirective
   ],
   exports: [
     TranslateModule,
 
     FooterComponent,
     FormatCurrencyPipe,
-    HeaderComponent
+    HeaderComponent,
+    InputFocusDirective
   ],
   imports: [
     CommonModule,
@@ -54,6 +59,9 @@ import { FormatCurrencyPipe } from '@shared/pipes';
     MatToolbarModule,
     MatTooltipModule
   ],
-  providers: [FormatCurrencyPipe]
+  providers: [
+    FormatCurrencyPipe,
+    InputFocusDirective
+  ]
 })
 export class SharedModule { }

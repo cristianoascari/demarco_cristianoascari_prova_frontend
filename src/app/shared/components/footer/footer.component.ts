@@ -23,7 +23,11 @@ export class FooterComponent implements OnInit {
   constructor(
     protected languageService: LanguageService,
     protected translate: TranslateService
-  ) {}
+  ) {
+    this.translate.onLangChange.subscribe((event: any) => {
+      this.formLanguages.setValue(this.languageService.getCurrentLanguage());
+    });
+  }
 
   public ngOnInit(): void {
     const currentLanguage: string = this.languageService.getCurrentLanguage();

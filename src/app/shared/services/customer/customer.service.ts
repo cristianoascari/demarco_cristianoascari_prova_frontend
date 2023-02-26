@@ -24,6 +24,14 @@ export class CustomerService {
       );
   }
 
+  public getCustomerById(customerId: number): Observable<any> {
+    return this.http.get(`${CUSTOMERS_API_URL}/${customerId}`)
+      .pipe(
+        map((res) => res),
+        catchError((err) => throwError(err))
+      );
+  }
+
   public deleteCustomer(customer: ICustomer): Observable<any> {
     return this.http.delete(`${CUSTOMERS_API_URL}/${customer.id}`)
       .pipe(

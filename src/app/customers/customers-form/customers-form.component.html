@@ -1,3 +1,100 @@
-<p>
-  customers-form works!
-</p>
+<section class="form-container">
+  <form *ngIf="formGroup" [formGroup]="formGroup" (ngSubmit)="saveCustomer()">
+    <h1>
+      <span class="spn-icon">
+        <mat-icon>{{customerId? 'manage_accounts' : 'person_add'}}</mat-icon>
+      </span>
+      
+      {{(customerId ? 'labels.editCustomer' : 'labels.newCustomer') | translate}}
+    </h1>
+
+    <p *ngIf="customerId" class="form-group">
+      <mat-form-field>
+        <mat-label>{{'fields.id' | translate}}</mat-label>
+        <input
+          matInput
+          class="form-control"
+          id="id"
+          name="id"
+          formControlName="id"
+        >
+      </mat-form-field>
+    </p>
+
+    <p class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>{{'fields.name' | translate}}</mat-label>
+
+        <input
+          matInput
+          class="form-control inp inp-name"
+          id="name"
+          name="name"
+          formControlName="name"
+          placeholder="{{'fields.namePlaceholder' | translate}}"
+          required
+          appInputFocus
+          autofocus
+        >
+
+        <mat-hint>{{'fields.nameHint' | translate}}</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>{{'fields.age' | translate}}</mat-label>
+
+        <input
+          matInput type="number"
+          class="form-control inp inp-age"
+          id="age"
+          name="age"
+          formControlName="age"
+          maxlength="3"
+          size="3"
+          placeholder="{{'fields.agePlaceholder' | translate}}"
+          oninput="this.value=this.value.slice(0,this.maxLength)"
+          required
+        >
+
+        <mat-hint>{{'fields.ageHint' | translate}}</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <p class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>{{'fields.city' | translate}}</mat-label>
+
+        <input
+          matInput
+          class="form-control inp inp-city"
+          id="city"
+          name="city"
+          formControlName="city"
+          placeholder="{{'fields.cityPlaceholder' | translate}}"
+          required
+        >
+
+        <mat-hint>{{'fields.cityHint' | translate}}</mat-hint>
+      </mat-form-field>
+    </p>
+
+    <div class="buttons-row">
+      <button type="button" mat-button (click)="goHome()">
+        {{'labels.cancel' | translate}}
+      </button>
+
+      <button type="submit" mat-raised-button color="primary">
+        {{'labels.saveCustomer' | translate}}
+      </button>
+    </div>
+
+  </form>
+
+  <mat-progress-bar
+    *ngIf="!formGroup"
+    color="accent"
+    mode="indeterminate">
+  </mat-progress-bar>
+</section>
