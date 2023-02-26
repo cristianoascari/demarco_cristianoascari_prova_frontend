@@ -18,9 +18,9 @@ import { LanguageService } from '@shared/services/language/language.service';
 export class HeaderComponent {
 
   constructor(
-    protected languageService: LanguageService,
+    public languageService: LanguageService,
     private snackBar: MatSnackBar,
-    private translate: TranslateService
+    public translate: TranslateService
   ) {}
 
   public viewUserProfile(): void {

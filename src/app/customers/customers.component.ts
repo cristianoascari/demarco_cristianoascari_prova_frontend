@@ -58,7 +58,7 @@ export class CustomersComponent implements AfterViewInit, OnInit {
     private customersService: CustomerService,
     public dialog: MatDialog,
     private router: Router,
-    protected translate: TranslateService
+    public translate: TranslateService
   ) {}
 
   ngOnInit() {
