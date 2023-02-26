@@ -1,5 +1,5 @@
 // Angular.
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
@@ -14,6 +14,8 @@ const CUSTOMERS_API_URL: string = environment.apiURL + '/customers';
 
 @Injectable({providedIn: 'root'})
 export class CustomerService {
+  public httpOptions: any = this.buildHttpOptions();
+
   constructor(private http: HttpClient) {}
 
   public getCustomers(): Observable<any> {
@@ -32,11 +34,42 @@ export class CustomerService {
       );
   }
 
+  public createCustomer(customer: ICustomer): Observable<any> {
+    return this.http.post(
+      CUSTOMERS_API_URL,
+      JSON.stringify(customer),
+      this.httpOptions
+    ).pipe(
+        map((res) => res),
+        catchError((err) => throwError(err))
+      );
+  }
+
+  public updateCustomer(customer: ICustomer): Observable<any> {
+    return this.http.put(
+      `${CUSTOMERS_API_URL}/${customer.id}`,
+      JSON.stringify(customer),
+      this.httpOptions
+    ).pipe(
+      map((res) => res),
+      catchError((err) => throwError(err))
+    );
+  }
+
   public deleteCustomer(customer: ICustomer): Observable<any> {
     return this.http.delete(`${CUSTOMERS_API_URL}/${customer.id}`)
       .pipe(
         map((res) => res),
         catchError((err) => throwError(err))
       );
+  }
+
+  private buildHttpOptions(): any {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      observe: 'response'
+    };
   }
 }

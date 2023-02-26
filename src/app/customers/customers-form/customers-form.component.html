@@ -85,7 +85,7 @@
         {{'labels.cancel' | translate}}
       </button>
 
-      <button type="submit" mat-raised-button color="primary">
+      <button type="submit" mat-raised-button color="primary" [disabled]="!formGroup.valid">
         {{'labels.saveCustomer' | translate}}
       </button>
     </div>

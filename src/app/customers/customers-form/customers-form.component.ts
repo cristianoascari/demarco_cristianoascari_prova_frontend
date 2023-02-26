@@ -58,12 +58,47 @@ export class CustomersFormComponent implements OnInit {
     }
   }
 
-  public saveCustomer(): void {}
+  public saveCustomer(): void {
+    if (this.formGroup.valid) {
+      this.customer = {
+        age: this.formGroup.get('age').value,
+        city: this.formGroup.get('city').value,
+        id: this.formGroup.get('id').value,
+        name: this.formGroup.get('name').value,
+      };
+
+      if (this.customer.id) {
+        this.editCustomer();
+      } else {
+        this.createCustomer();
+      }
+    }
+  }
+
+  private createCustomer(): void {
+    this.customerService.createCustomer(this.customer).subscribe(res => {
+      this.startCreatingNewCustomer();
+    });
+  }
+
+  private editCustomer(): void {
+    this.customerService.updateCustomer(this.customer).subscribe(res => {
+      this.goHome();
+    });
+  }
 
   private startCreatingNewCustomer(): void {
-    this.customer = this.buildNewCustomer();
+    // TO DO: Verificar pq o form não está sendo resetado de acordo.
+    /*this.customer = this.buildNewCustomer();
 
     this.formGroup.reset();
+    this.formGroup.markAsPristine();
+    this.formGroup.markAsUntouched();
+    this.formGroup.updateValueAndValidity();
+
+    document.getElementById('name').focus();*/
+
+    window.location.reload();
   }
 
   private createForm(): void {
