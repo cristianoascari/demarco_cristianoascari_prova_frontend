@@ -45,4 +45,19 @@
       text-align: right;
     }
   }
+
+
+
+  .mat-footer-row {
+    td {
+      border-bottom: none;
+    }
+    
+    .mat-footer-cell {
+      &.td-total {
+        font-weight: bold;
+        text-align: right;
+      }
+    }
+  }
 }

@@ -49,4 +49,11 @@ export class CustomerDataComponent implements OnInit {
       this.totalValue = res[0].total;
     });
   }
+
+  // NOTA:
+  // O total presente no objeto ORDER não bate!
+  public getTotalSpent(): number {
+    const total: number = this.customerOrderItems.reduce((sum, current) => sum + current[0].value, 0);
+    return total;
+  }
 }
