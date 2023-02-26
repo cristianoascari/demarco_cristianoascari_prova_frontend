@@ -104,7 +104,8 @@ export class CustomersComponent implements AfterViewInit, OnInit {
       this.dataSource = new MatTableDataSource<any>(customer);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sortingDataAccessor = (data, sortHeaderId) => {
-        const value: any = data[sortHeaderId.toLowerCase()];
+        const refColumnName: string = this.tableColumnsRef[this.tableColumns.findIndex(c => c === sortHeaderId)];
+        const value: any = data[refColumnName];
 
         return typeof value === 'string' ? value.toUpperCase() : value;
       };
