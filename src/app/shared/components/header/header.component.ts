@@ -24,10 +24,10 @@ export class HeaderComponent {
   ) {}
 
   public viewUserProfile(): void {
-    this.snackBar.open(this.translate.instant('messages.error.todo'), 'OK');
+    this.snackBar.open(this.translate.instant('messages.error.todo'), 'OK', {duration: 5000});
   }
 
   public logoutUser(): void {
-    this.snackBar.open(this.translate.instant('messages.error.todo'), 'OK');
+    this.snackBar.open(this.translate.instant('messages.error.todo'), 'OK', {duration: 5000});
   }
 }
