@@ -48,7 +48,7 @@
   },
   "messages": {
     "error": {
-      "notFound": "404 - Not found URL",
+      "notFound": "Not found URL",
       "noItemsFound": "There are no items do show",
       "todo": "Resource not implemented"
     },

@@ -48,7 +48,7 @@
   },
   "messages": {
     "error": {
-      "notFound": "404 - URL não localizada",
+      "notFound": "URL não localizada",
       "noItemsFound": "Nenhum item localizado",
       "todo": "Recurso não implementado"
     },
